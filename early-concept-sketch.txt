@@ -1,0 +1,19 @@
+
+
+        .---------------------------------.
+        |         pc (optional)           |
+        '---------------------------------'
+         |               |               |
+         | sound         | music         | download manager
+         | (pulseaudio)  | (mpd client)  | (selfmade client/server dl)
+         v               v               v
+        .---------------------------------.
+        | raspberry pi / cubieboard       |
+        | (hdd, mpd, pulseaudiod)         |
+        '----.-----------.----------------'
+             |           |          ^
+             |           |          |
+             v           v          |
+        .----------.  .-----.  .----'-----.
+        | hifi amp |  | lcd |  | controls |
+        '----------'  '-----'  '----------'

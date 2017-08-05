@@ -1,0 +1,4 @@
+https://www.hifiberry.com/guides/gpio-usage-of-the-hifiberry-products/
+
+GPIO 2, 3 (configuration only)
+GPIO 18 - 21 (fixed, not usable)

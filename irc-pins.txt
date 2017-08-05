@@ -1,0 +1,3 @@
+data in - pin 26
+power   - any 3.3V pin
+gnd     - any GND pin
