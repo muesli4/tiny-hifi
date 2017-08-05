@@ -23,6 +23,12 @@ A custom-build Archlinux is used as operating system. Some of the key components
 * ![**mpd-touch-screen-gui**](https://github.com/muesli4/mpd-touch-screen-gui) as main application for the touch display
 * **lirc** and **irexec** for handling a remote control
 
+# Open tasks
+
+* Rubber feet
+* Back-cover and air vent holes
+* Add more features to the GUI
+
 # Contact
 
 Let me know if you need any additional information. If there is enough interest I will write a tutorial.
