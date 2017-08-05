@@ -15,7 +15,7 @@ The circuits for the PWM light control and the IR receiver are only on paper cur
 
 # Software
 
-A custom-build Archlinux is used as operating system. Some of the key components are:
+Archlinux is used as operating system. Some of the key components are:
 
 * **libavahi** for *zeroconf* auto-detection of streaming sources
 * **pulseaudio** for streaming audio over ethernet
