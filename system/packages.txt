@@ -1,4 +1,4 @@
-abs
+# created with: pacman -Qqe
 alsa-utils
 autoconf
 automake
@@ -11,7 +11,6 @@ bzip2
 cabal-install
 cmake
 coreutils
-cower
 cryptsetup
 device-mapper
 dhcpcd
@@ -20,7 +19,7 @@ directfb
 distcc
 dosfstools
 e2fsprogs
-espeak
+espeak-ng
 evtest
 fakeroot
 fbgetty
@@ -37,6 +36,7 @@ gcc
 gcc-libs
 gdb
 gettext
+ghc
 glibc
 grep
 gzip

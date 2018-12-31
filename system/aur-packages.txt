@@ -1,0 +1,22 @@
+# most of these are probably not necessary
+# created with: sudo pacman -Qm | cut -f 1 -d ' '
+directfb
+fbgetty
+fbterm
+fim
+irexec-systemd
+js17
+libtinfo
+libtxc_dxtn
+libwtk-sdl2-git
+llvm35-libs
+llvm37-libs
+llvm39-libs
+mpd-touch-screen-gui-git
+pikaur
+pulsemixer-git
+pyqt4-common
+python-pyqt4
+qtwebkit
+tdfsb
+xorg-startx-systemd
