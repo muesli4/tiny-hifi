@@ -1,0 +1,36 @@
+# See /boot/overlays/README
+
+device_tree_param=i2c_arm=on
+device_tree_param=i2s=on
+device_tree_param=spi=on
+#device_tree_param=act_led_trigger=mmc
+
+# enable amp+
+dtoverlay=hifiberry-amp
+
+# enable remote control on pin 37 (gpio 26)
+dtoverlay=lirc-rpi
+dtparam=gpio_in_pin=26,debug=1
+
+# enable dht11 temp/humidity-sensor on pin 33 (gpio 13)
+#dtoverlay=dht11
+#dtparam=gpiopin=13
+
+# enable touchscreen
+dtoverlay=ads7846
+dtparam=penirq=25
+dtparam=penirq_pull=2
+dtparam=xohms=400
+# TODO check values
+dtparam=xmin=390
+dtparam=xmax=3600
+dtparam=ymin=390
+dtparam=ymax=3600
+#dtparam=pmin=58000
+#dtparam=pmax=65535
+# solved in xorg config for touchscreen
+#dtparam=swapxy=1
+# it's actually swap-xy
+
+gpu_mem=64
+#initramfs initramfs-linux.img followkernel

@@ -1,0 +1,12 @@
+# 
+# /etc/fstab: static file system information
+#
+# <file system> <dir>      <type>  <options>                                      <dump>  <pass>
+/dev/mmcblk0p1  /boot      vfat    defaults,noatime,nodiratime                    0       0
+/dev/mmcblk0p2  /          ext4    rw,noatime                                     0       0
+LABEL=music     /mnt/music ext4    defaults,user,rw,nofail,noatime,nodiratime,exec     0       0
+
+# tmpfs to avoid using sdcard writing
+tmpfs           /tmp       tmpfs   rw,defaults                                    0       0
+tmpfs           /var/log   tmpfs   rw,defaults                                    0       0
+#tmpfs           /var/run   tmpfs   rw,defaults                                    0       0

@@ -1,0 +1,337 @@
+begin irexec
+    # pulseaudio debug
+    #begin
+    #    prog   = irexec
+    #    button = KEY_I
+    #    config = killall pulseaudio && LANG=C pulseaudio -vvvv --log-time=1 > ~/pulseverbose.log 2>&1
+    #end
+
+    ################################################
+    # start pc control mode
+    begin
+        prog   = irexec
+        button = KEY_AUX
+        config = echo "pc mode" | speak-en.sh
+        mode   = pcc
+        flags  = quit
+    end
+    
+    ################################################
+    # shutdown
+    
+    begin
+        prog   = irexec
+        button = KEY_POWER
+        config = echo 'shutting down';sudo /sbin/poweroff
+    end
+    
+    # TODO workarround
+    begin
+        prog   = irexec
+        button = KEY_CD
+        config = echo 'shutting down';sudo /sbin/poweroff
+    end
+
+    ################################################
+    # time
+    
+    begin
+        prog   = irexec
+        button = KEY_C
+        config = date +"Es ist %k uhr %M" | speak-de.sh
+    end
+    
+    ################################################
+    # volume control
+    begin
+        prog   = irexec
+        button = KEY_MUTE
+        config = amixer -D pulse set Master 1+ toggle
+    end
+    
+    ################################################
+    # multimedia keys for mpc
+    
+    begin
+        prog   = irexec
+        button = KEY_VOLUMEUP
+        config = mpc volume +5
+        repeat = 1
+        delay  = 4
+    end
+    begin
+        prog   = irexec
+        button = KEY_VOLUMEDOWN
+        config = mpc volume -5
+        repeat = 1
+        delay  = 4
+    end
+    begin
+        prog   = irexec
+        button = KEY_PLAYPAUSE
+        config = mpc toggle
+    end
+    # TODO workarround
+    begin
+        prog   = irexec
+        button = KEY_TUNER
+        config = mpc toggle
+    end
+    begin
+        prog   = irexec
+        button = KEY_NEXT
+        config = mpc next
+    end
+    begin
+        prog   = irexec
+        button = KEY_PREVIOUS
+        config = mpc prev
+    end
+    begin
+        prog   = irexec
+        button = KEY_STOP
+        config = mpc stop
+    end
+    begin
+        prog   = irexec
+        button = KEY_FORWARD
+        config = mpc seek +10
+        repeat = 1
+        delay  = 2
+    end
+    begin
+        prog   = irexec
+        button = KEY_BACK
+        config = mpc seek -10
+        repeat = 1
+        delay  = 2
+    end
+    begin
+        prog   = irexec
+        button = KEY_SHUFFLE
+        config = mpc random; echo "random $(mpd-check-stat.sh random)" | speak-en.sh
+    end
+    begin
+        prog   = irexec
+        button = KEY_MEDIA_REPEAT
+        config = mpc repeat; echo "repeat $(mpd-check-stat.sh repeat)" | speak-en.sh
+    end
+    begin
+        prog   = irexec
+        button = KEY_TEXT
+        config = mpc | (head -n -2; echo "No song playing") | head -n 1 | speak-en.sh
+    end
+    #begin
+    #    prog   = irexec
+    #    button = KEY_PROGRAM
+    #    config = export SDL_VIDEODRIVER=directfb && export SDL_FBDEV=/dev/fb1 && (env > /tmp/x/env) &&  (/tmp/x/a.out > /tmp/x/log)
+    #end
+    #begin
+    #    prog   = irexec
+    #    button = KEY_LIGHTS_TOGGLE
+    #    config = display-pwm.sh 0
+    #    config = display-pwm.sh 256
+    #    config = display-pwm.sh 512
+    #    config = display-pwm.sh 900
+    #    config = display-pwm.sh 1024
+    #end
+
+    # gui navigation
+    begin
+        prog   = irexec
+        button = KEY_LIGHTS_TOGGLE
+        config = /usr/bin/mpd-touch-screen-gui-send l
+    end
+    begin
+        prog   = irexec
+        button = KEY_ALS_TOGGLE
+        config = /usr/bin/mpd-touch-screen-gui-send r
+    end
+    begin
+        prog   = irexec
+        button = KEY_PROGRAM
+        config = /usr/bin/mpd-touch-screen-gui-send d
+    end
+    begin
+        prog   = irexec
+        button = KEY_SLEEP
+        config = /usr/bin/mpd-touch-screen-gui-send u
+    end
+    begin
+        prog   = irexec
+        button = KEY_TIME
+        config = /usr/bin/mpd-touch-screen-gui-send a
+    end
+    begin
+        prog   = irexec
+        button = KEY_FN_F1
+        config = /usr/bin/mpd-touch-screen-gui-send p
+    end
+    begin
+        prog   = irexec
+        button = KEY_FN_F3
+        config = /usr/bin/mpd-touch-screen-gui-send n
+    end
+    # unselect
+    begin
+        prog   = irexec
+        button = KEY_FN_F2
+        config = /usr/bin/mpd-touch-screen-gui-send x
+    end
+
+end irexec
+
+begin pcc
+    # switch back mode
+    begin
+        button = KEY_AUX
+        prog   = irexec
+        config = echo "window manager" | speak-en.sh
+        mode   = irexec
+        flags  = quit
+    end
+
+    # volume actions
+    begin
+        prog   = irexec
+        button = KEY_VOLUMEDOWN
+        config = remote-action-client volume_down
+    end
+    begin
+        prog   = irexec
+        button = KEY_VOLUMEUP
+        config = remote-action-client volume_up
+    end
+    begin
+        prog   = irexec
+        button = KEY_MUTE
+        config = remote-action-client volume_mute
+    end
+
+    # vlc actions
+    begin
+        prog   = irexec
+        button = KEY_PLAYPAUSE
+        config = remote-action-client vlc_toggle_pause
+    end
+    begin
+        prog   = irexec
+        button = KEY_STOP
+        config = remote-action-client vlc_stop
+    end
+    begin
+        prog   = irexec
+        button = KEY_OK
+        config = remote-action-client vlc_short_forward
+    end
+    begin
+        prog   = irexec
+        button = KEY_CANCEL
+        config = remote-action-client vlc_short_backward
+    end
+    begin
+        prog   = irexec
+        button = KEY_FORWARD
+        config = remote-action-client vlc_forward
+    end
+    begin
+        prog   = irexec
+        button = KEY_BACK
+        config = remote-action-client vlc_backward
+    end
+    begin
+        prog   = irexec
+        button = KEY_NEXT
+        config = remote-action-client vlc_next
+    end
+    begin
+        prog   = irexec
+        button = KEY_PREVIOUS
+        config = remote-action-client vlc_prev
+    end
+    begin
+        prog   = irexec
+        button = KEY_B
+        config = remote-action-client vlc_subtitle_d+
+    end
+    begin
+        prog   = irexec
+        button = KEY_A
+        config = remote-action-client vlc_subtitle_d-
+    end
+    begin
+        prog   = irexec
+        button = KEY_Z
+        config = remote-action-client vlc_audio_d+
+    end
+    begin
+        prog   = irexec
+        button = KEY_Y
+        config = remote-action-client vlc_audio_d-
+    end
+    begin
+        prog   = irexec
+        button = KEY_DISPLAYTOGGLE
+        config = remote-action-client vlc_toggle_fs
+    end
+    begin
+        prog   = irexec
+        button = KEY_DISPLAYTOGGLE
+        config = remote-action-client vlc_toggle_fs
+    end
+    begin
+        prog   = irexec
+        button = KEY_SLEEP
+        config = remote-action-client mouse_up
+    end
+    begin
+        prog   = irexec
+        button = KEY_PROGRAM
+        config = remote-action-client mouse_down
+    end
+    begin
+        prog   = irexec
+        button = KEY_LIGHTS_TOGGLE
+        config = remote-action-client mouse_left
+    end
+    begin
+        prog   = irexec
+        button = KEY_ALS_TOGGLE
+        config = remote-action-client mouse_right
+    end
+    begin
+        prog   = irexec
+        button = KEY_FN_F1
+        config = remote-action-client mouse_clickl
+    end
+    begin
+        prog   = irexec
+        button = KEY_FN_F3
+        config = remote-action-client mouse_clickr
+    end
+    begin
+        prog   = irexec
+        button = KEY_FN_F2
+        config = remote-action-client mouse_scrollu
+    end
+    begin
+        prog   = irexec
+        button = KEY_TIME
+        config = remote-action-client mouse_scrolld
+    end
+    begin
+        prog   = irexec
+        button = KEY_TIME
+        config = remote-action-client mouse_scrolld
+    end
+    begin
+        prog   = irexec
+        button = KEY_SHUFFLE
+        config = remote-action-client wm_next_workspace
+    end
+    begin
+        prog   = irexec
+        button = KEY_MEDIA_REPEAT
+        config = remote-action-client wm_prev_workspace
+    end
+end pcc
