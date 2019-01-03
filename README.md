@@ -32,11 +32,20 @@ The circuits for the PWM light control and the IR receiver are only on paper cur
 
 You can find the installed packages, scripts and configuration files in the [system directory](https://github.com/muesli4/tiny-hifi/tree/master/system).
 
+# Case
+
+The case is made from acrylic glas. The sides are 5mm, the bottom and top 8mm and the front 3mm thick. The front is made from blue UV-active acrylic glas. Almost all parts are connected with screws. For that purpose I tapped a thread into it. Only the front piece is glued to two parts.
+
+I finished the sides with a chisel. The edges are smoothed with a chisel as well at a 45° angle.
+
+It was a lot harder than it looks. Especially the precision to make everything fit is hard to achieve without the right tools. *Also a little hint if you're planning to cut acrylic glas: The buzz saw might shatter your edges. Always use several layers of adhesive tape on both sides of it!*
+
 # Open tasks
 
 * Rubber feet
 * Back-cover and air vent holes
 * Add more features to the GUI
+* Smooth out front piece at the top
 
 # Contact
 
