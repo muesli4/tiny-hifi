@@ -1,5 +1,6 @@
 # most of these are probably not necessary
 # created with: sudo pacman -Qm | cut -f 1 -d ' '
+anything-sync-daemon
 directfb
 fbgetty
 fbterm
