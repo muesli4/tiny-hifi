@@ -68,6 +68,7 @@ mpd-touch-screen-gui-git
 nano
 net-tools
 netctl
+ntfs-3g
 omxplayer-git
 openssh
 pacman

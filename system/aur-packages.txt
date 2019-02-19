@@ -13,6 +13,7 @@ libwtk-sdl2-git
 llvm35-libs
 llvm37-libs
 llvm39-libs
+mpd-automount-git
 mpd-touch-screen-gui-git
 pikaur
 pulsemixer-git
